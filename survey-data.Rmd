@@ -85,8 +85,8 @@ play_survey_files <-
 
 # Print the files data in a 'pretty' way
 play_survey_files %>%
-  kableExtra::kable(., format = 'html') %>%
-  kableExtra::kable_styling(.)
+  kableExtra::kbl(.) %>%
+  kableExtra::kable_styling(., bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
 ```
 
 Note that each file has an `asset_id`.
@@ -107,8 +107,8 @@ pets <-
 
 # Print the pets data
 pets %>%
-  kableExtra::kable(., format = 'html') %>%
-  kableExtra::kable_styling(.)  
+  kableExtra::kbl(.) %>%
+  kableExtra::kable_styling(., bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
 ```
 
 We can do a bit of clean-up here to see what families have pets and of what type.
@@ -127,8 +127,8 @@ pets_cleaned <- pets %>%
 ```{r homes-w-dogs}
 pets_cleaned %>%
   dplyr::filter(., has_dog == TRUE) %>%
-  kableExtra::kable(., format = 'html') %>%
-  kableExtra::kable_styling(.)  
+  kableExtra::kbl(.) %>%
+  kableExtra::kable_styling(., bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
 ```
 
 It looks like there are more homes with dogs.
@@ -138,14 +138,64 @@ It looks like there are more homes with dogs.
 ```{r homes-w-cats}
 pets_cleaned %>%
   dplyr::filter(., has_cat == TRUE) %>%
-  kableExtra::kable(., format = 'html') %>%
-  kableExtra::kable_styling(.)  
+  kableExtra::kbl(.) %>%
+  kableExtra::kable_styling(., bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
 ```
 
 Most cats and dogs live indoors.
 This must be in NYC!
 
 Also, there seem to be dog families and cat families, but not both.
+
+## Typical day
+
+```{r typical-day}
+# Grab the asset_id for the data based on the name
+typical_in_name <-
+  stringr::str_detect(play_survey_files$name, 'typical')
+typical_asset_id <- play_survey_files$asset_id[typical_in_name]
+
+# Select and download the data
+typical_day_data <-
+  databraryapi::read_csv_data_as_df(params$play_survey_session_id, as.numeric(typical_asset_id))
+
+# Print the data
+typical_day_data %>%
+  kableExtra::kbl(.) %>%
+  kableExtra::kable_styling(.,
+                            bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
+```
+
+We'll do a little clean-up and select a smaller number of columns.
+
+```{r clean-typical-day}
+typical_cleaned <- typical_day_data %>%
+  dplyr::mutate(
+    .,
+    typical_day = recode(typical_day, 'Sí' = 'Yes'),
+    activities_similar = recode(activities_similar, 'Sí' = 'Yes'),
+    typical_night_morning = recode(typical_night_morning, 'Sí' = 'Yes'),
+    unusual_feelings = recode(unusual_feelings, 'Sí' = 'Yes')
+  ) %>%
+  dplyr::select(
+    .,
+    play_site_id,
+    child_age_grp,
+    typical_day,
+    activities_similar,
+    typical_night_morning,
+    unusual_feelings
+  ) %>%
+  dplyr::arrange(., child_age_grp)
+
+# Print the data
+typical_cleaned %>%
+  kableExtra::kbl(.) %>%
+  kableExtra::kable_styling(.,
+                            bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
+```
+
+Note that the `unusual_feelings` variable might need to be examined more closely.
 
 # Clean-up
 

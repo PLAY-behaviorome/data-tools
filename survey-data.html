@@ -1790,7 +1790,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">PLAY Survey Data</h1>
 <h4 class="author">Rick Gilmore</h4>
-<h4 class="date">2021-02-11 10:22:44</h4>
+<h4 class="date">2021-02-11 12:40:47</h4>
 
 </div>
 
@@ -1840,9 +1840,9 @@ library(tidyverse) # for pipe `%&gt;%` operator</code></pre>
 
 # Print the files data in a &#39;pretty&#39; way
 play_survey_files %&gt;%
-  kableExtra::kable(., format = &#39;html&#39;) %&gt;%
-  kableExtra::kable_styling(.)</code></pre>
-<table class="table" style="margin-left: auto; margin-right: auto;">
+  kableExtra::kbl(.) %&gt;%
+  kableExtra::kable_styling(., bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:right;">
@@ -2179,9 +2179,9 @@ pets &lt;-
 
 # Print the pets data
 pets %&gt;%
-  kableExtra::kable(., format = &#39;html&#39;) %&gt;%
-  kableExtra::kable_styling(.)  </code></pre>
-<table class="table" style="margin-left: auto; margin-right: auto;">
+  kableExtra::kbl(.) %&gt;%
+  kableExtra::kable_styling(., bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -3097,9 +3097,9 @@ NA
 <h3>Homes with dogs</h3>
 <pre class="r"><code>pets_cleaned %&gt;%
   dplyr::filter(., has_dog == TRUE) %&gt;%
-  kableExtra::kable(., format = &#39;html&#39;) %&gt;%
-  kableExtra::kable_styling(.)  </code></pre>
-<table class="table" style="margin-left: auto; margin-right: auto;">
+  kableExtra::kbl(.) %&gt;%
+  kableExtra::kable_styling(., bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -3496,9 +3496,9 @@ FALSE
 <h3>Homes with cats</h3>
 <pre class="r"><code>pets_cleaned %&gt;%
   dplyr::filter(., has_cat == TRUE) %&gt;%
-  kableExtra::kable(., format = &#39;html&#39;) %&gt;%
-  kableExtra::kable_styling(.)  </code></pre>
-<table class="table" style="margin-left: auto; margin-right: auto;">
+  kableExtra::kbl(.) %&gt;%
+  kableExtra::kable_styling(., bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -3682,6 +3682,1952 @@ TRUE
 <p>Most cats and dogs live indoors. This must be in NYC!</p>
 <p>Also, there seem to be dog families and cat families, but not both.</p>
 </div>
+</div>
+<div id="typical-day" class="section level2">
+<h2>Typical day</h2>
+<pre class="r"><code># Grab the asset_id for the data based on the name
+typical_in_name &lt;-
+  stringr::str_detect(play_survey_files$name, &#39;typical&#39;)
+typical_asset_id &lt;- play_survey_files$asset_id[typical_in_name]
+
+# Select and download the data
+typical_day_data &lt;-
+  databraryapi::read_csv_data_as_df(params$play_survey_session_id, as.numeric(typical_asset_id))
+
+# Print the data
+typical_day_data %&gt;%
+  kableExtra::kbl(.) %&gt;%
+  kableExtra::kable_styling(.,
+                            bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+play_site_id
+</th>
+<th style="text-align:right;">
+site_child_id
+</th>
+<th style="text-align:left;">
+child_age_grp
+</th>
+<th style="text-align:left;">
+child_sex
+</th>
+<th style="text-align:left;">
+kobo_form
+</th>
+<th style="text-align:left;">
+typical_day
+</th>
+<th style="text-align:left;">
+day_how_different
+</th>
+<th style="text-align:left;">
+activities_similar
+</th>
+<th style="text-align:left;">
+activities_different
+</th>
+<th style="text-align:left;">
+typical_night_morning
+</th>
+<th style="text-align:left;">
+night_morning_how_different
+</th>
+<th style="text-align:left;">
+unusual_feelings
+</th>
+<th style="text-align:left;">
+feelings_how_different
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+PLAY_89941455
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_Bilingual_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941534
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_Bilingual_Spanish
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_899_232_NODB
+</td>
+<td style="text-align:right;">
+232
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941894
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442353
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441417
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Mom had a “debilitating cold”
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89943207
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Mom would typically be at work
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_899_226_NODB
+</td>
+<td style="text-align:right;">
+226
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Child took a nap before experimenter came.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938197
+</td>
+<td style="text-align:right;">
+228
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938485
+</td>
+<td style="text-align:right;">
+231
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+She was at a friend’s for the night first and then brought home. She slept about the same but slept in a little bit more.
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441428
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Spent less time with nanny
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941608
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Baby up last night and didn’t sleep well. Baby slept in this morning, timing of usual routine is off.
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442694
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Stayed indoors
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442127
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_98242940
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938196
+</td>
+<td style="text-align:right;">
+227
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95440510
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_899_232_NODB
+</td>
+<td style="text-align:right;">
+232
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941535
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Crankier than usual
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Usually go outside
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Wasn’t sleeping well. Woke up at 2am and then again earlier than usual
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Mom was more tired and stressed than usual.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_96643624
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_110344638
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+A little more shy than normal, and usually follows mom, but has a new toy (stickers) and wanted to focus on that today
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes because it was raining, but if it was not raining this is the time of day that they normally go outside
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938215
+</td>
+<td style="text-align:right;">
+229
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+24_Bilingual_Spanish
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_98242292
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442353
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441873
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938236
+</td>
+<td style="text-align:right;">
+230
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Dog having to go out early
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941800
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Got home a little later so different bedtime routine
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941808
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441873
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89943530
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<p>We’ll do a little clean-up and select a smaller number of columns.</p>
+<pre class="r"><code>typical_cleaned &lt;- typical_day_data %&gt;%
+  dplyr::mutate(
+    .,
+    typical_day = recode(typical_day, &#39;Sí&#39; = &#39;Yes&#39;),
+    activities_similar = recode(activities_similar, &#39;Sí&#39; = &#39;Yes&#39;),
+    typical_night_morning = recode(typical_night_morning, &#39;Sí&#39; = &#39;Yes&#39;),
+    unusual_feelings = recode(unusual_feelings, &#39;Sí&#39; = &#39;Yes&#39;)
+  ) %&gt;%
+  dplyr::select(
+    .,
+    play_site_id,
+    child_age_grp,
+    typical_day,
+    activities_similar,
+    typical_night_morning,
+    unusual_feelings
+  ) %&gt;%
+  dplyr::arrange(., child_age_grp)
+
+# Print the data
+typical_cleaned %&gt;%
+  kableExtra::kbl(.) %&gt;%
+  kableExtra::kable_styling(.,
+                            bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+play_site_id
+</th>
+<th style="text-align:left;">
+child_age_grp
+</th>
+<th style="text-align:left;">
+typical_day
+</th>
+<th style="text-align:left;">
+activities_similar
+</th>
+<th style="text-align:left;">
+typical_night_morning
+</th>
+<th style="text-align:left;">
+unusual_feelings
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+PLAY_89941455
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941534
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_899_232_NODB
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941894
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442353
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441417
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89943207
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_899_226_NODB
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938197
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938485
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441428
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941608
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442694
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442127
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_98242940
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938196
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95440510
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_899_232_NODB
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941535
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_96643624
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_110344638
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938215
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_98242292
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442353
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441873
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938236
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941800
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941808
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441873
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89943530
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the <code>unusual_feelings</code> variable might need to be examined more closely.</p>
 </div>
 </div>
 <div id="clean-up" class="section level1">
