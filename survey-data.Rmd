@@ -1,0 +1,151 @@
+---
+title: "PLAY Survey Data"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+output: 
+    html_document:
+      self_contained: yes
+      code_folding: show
+      toc: true
+      toc_depth: 2
+      toc_float: true
+
+params:
+  db_login: email@provider.com
+  play_volume_id: 1280
+  play_survey_session_id: 51539
+---
+
+# Purpose
+
+This document shows how to access and visualize survey response data from the PLAY dataset.
+
+# Rendering
+
+To render the document, issue this command from the R console
+
+`rmarkdown::render('survey-data.Rmd', params = list(db_login='<YOUR_DATABRARY_LOGIN>'))`
+
+substituting your actual Databrary login (email account) for `<YOUR_DATABRARY_LOGIN>`.
+
+# Setup
+
+There are several R packages we need to run this code.
+The following will test to see if the packages are installed on your system.
+If not, the packages will be installed for you.
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+
+if (!require(tidyverse)) {
+  install.packages('tidyverse')
+}
+
+if (!require(devtools)) {
+  install.packages('devtools')
+}
+
+if (!require(databraryapi)) {
+  devtools::install_github('PLAY-behaviorome/databraryapi')
+}
+
+library(tidyverse) # for pipe `%>%` operator
+```
+
+You will need to login to Databrary in order to access the PLAY data.
+The next chunk asks for your Databrary credentials.
+It returns `TRUE` if your login is successful.
+
+```{r login-databrary}
+databraryapi::login_db(params$db_login)
+```
+
+# List files
+
+Databrary 1.0 has a volume/session structure.
+A volume is a dataset or collection.
+A session is a collection of related files.
+You can think of a session as a folder.
+The survey data are in a session folder called 'KoBoToolbox Survey Data'.
+Volumes and sessions have ID numbers that Databrary uses to access each.
+
+The PLAY data release volume has an id of `r params$play_volume_id`.
+The survey data session has a session id of `r params$play_survey_session_id`.
+
+So, to go to the PLAY volume in your browser, you can visit <https://nyu.databrary.org/volume/1280>.
+And to visit the session data in your browser, you can visit <https://nyu.databrary.org/volume/1280/session/51539>.
+
+The following code, however, does all of this within an R session.
+
+```{r load-play-survey-files}
+play_survey_files <- databraryapi::list_assets_in_session(session_id = params$play_survey_session_id)
+
+# Print the files data in a 'pretty' way
+play_survey_files %>%
+  kableExtra::kable(., format = 'html') %>%
+  kableExtra::kable_styling(.)
+```
+
+Note that each file has an `asset_id`.
+We'll use this to access the data file(s) we want.
+
+# Import by measure
+
+## Pets
+
+```{r load-pets}
+# Grab the asset_id for the pets data based on the name
+pets_in_name <- stringr::str_detect(play_survey_files$name, 'pets')
+pets_asset_id <- play_survey_files$asset_id[pets_in_name]
+
+# Select and download the pets data
+pets <- databraryapi::read_csv_data_as_df(params$play_survey_session_id, as.numeric(pets_asset_id))
+
+# Print the pets data
+pets %>%
+  kableExtra::kable(., format = 'html') %>%
+  kableExtra::kable_styling(.)  
+```
+
+We can do a bit of clean-up here to see what families have pets and of what type.
+
+```{r clean-pets}
+pets_cleaned <- pets %>%
+  dplyr::mutate(., pets_at_home = recode(pets_at_home, 'Sí' = 'Yes'),
+                has_dog = stringr::str_detect(type_number, '[dD]og'),
+                has_cat = stringr::str_detect(type_number, '[cC]at'),
+                where_live = recode(where_live, 'Adentro' = 'Indoors')) %>%
+  dplyr::arrange(., child_age_grp)
+```
+
+### Homes with dogs
+
+```{r homes-w-dogs}
+pets_cleaned %>%
+  dplyr::filter(., has_dog == TRUE) %>%
+  kableExtra::kable(., format = 'html') %>%
+  kableExtra::kable_styling(.)  
+```
+
+It looks like there are more homes with dogs.
+
+### Homes with cats
+
+```{r homes-w-cats}
+pets_cleaned %>%
+  dplyr::filter(., has_cat == TRUE) %>%
+  kableExtra::kable(., format = 'html') %>%
+  kableExtra::kable_styling(.)  
+```
+
+Most cats and dogs live indoors.
+This must be in NYC!
+
+# Clean-up
+
+Log out of Databrary.
+
+```{r logout-databrary}
+databraryapi::logout_db()
+```
+
