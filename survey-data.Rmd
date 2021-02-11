@@ -226,21 +226,21 @@ household_labor %>%
 ## Health
 
 ```{r health}
-# Grab the asset_id for the data based on the name
-health_in_name <-
-  stringr::str_detect(play_survey_files$name, 'health')
-health_asset_id <- play_survey_files$asset_id[health_in_name]
-
-# Select and download the data
-health <-
-  databraryapi::read_csv_data_as_df(params$play_survey_session_id, as.numeric(health_asset_id))
-
-# Print the data
-health %>%
-  kableExtra::kbl(.) %>%
-  kableExtra::kable_styling(.,
-                            bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-  kableExtra::scroll_box(width = "800px", height = "300px")
+# # Grab the asset_id for the data based on the name
+# health_in_name <-
+#   stringr::str_detect(play_survey_files$name, 'health')
+# health_asset_id <- play_survey_files$asset_id[health_in_name]
+# 
+# # Select and download the data
+# health <-
+#   databraryapi::read_csv_data_as_df(params$play_survey_session_id, as.numeric(health_asset_id))
+# 
+# # Print the data
+# health %>%
+#   kableExtra::kbl(.) %>%
+#   kableExtra::kable_styling(.,
+#                             bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+#   kableExtra::scroll_box(width = "800px", height = "300px")
 ```
 
 # Clean-up
