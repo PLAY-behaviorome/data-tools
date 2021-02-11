@@ -1790,7 +1790,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">PLAY Survey Data</h1>
 <h4 class="author">Rick Gilmore</h4>
-<h4 class="date">2021-02-11 12:40:47</h4>
+<h4 class="date">2021-02-11 14:47:58</h4>
 
 </div>
 
@@ -1833,7 +1833,7 @@ library(tidyverse) # for pipe `%&gt;%` operator</code></pre>
 <h1>List files</h1>
 <p>Databrary 1.0 has a volume/session structure. A volume is a dataset or collection. A session is a collection of related files. You can think of a session as a folder. The survey data are in a session folder called ‘KoBoToolbox Survey Data’. Volumes and sessions have ID numbers that Databrary uses to access each.</p>
 <p>The PLAY data release volume has an id of 1280. The survey data session has a session id of 51539.</p>
-<p>So, to go to the PLAY volume in your browser, you can visit <a href="https://nyu.databrary.org/volume/1280" class="uri">https://nyu.databrary.org/volume/1280</a>. And to visit the session data in your browser, you can visit <a href="https://nyu.databrary.org/volume/1280/session/51539" class="uri">https://nyu.databrary.org/volume/1280/session/51539</a>.</p>
+<p>So, to go to the PLAY volume in your browser, you can visit <a href="https://nyu.databrary.org/volume/1280" class="uri">https://nyu.databrary.org/volume/1280</a>.</p>
 <p>The following code, however, does all of this within an R session.</p>
 <pre class="r"><code>play_survey_files &lt;-
   databraryapi::list_assets_in_session(session_id = params$play_survey_session_id)
@@ -1841,46 +1841,83 @@ library(tidyverse) # for pipe `%&gt;%` operator</code></pre>
 # Print the files data in a &#39;pretty&#39; way
 play_survey_files %&gt;%
   kableExtra::kbl(.) %&gt;%
-  kableExtra::kable_styling(., bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+  kableExtra::kable_styling(., bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) %&gt;%
+  kableExtra::scroll_box(width = &quot;800px&quot;, height = &quot;300px&quot;)</code></pre>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:800px; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 asset_id
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 asset_type_id
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 classification
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 name
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 permission
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 size
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 session_id
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 mimetype
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 extension
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 asset_type
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 transcodable
 </th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:right;">
+297665
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+PLAY_all_basic_demog
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4860
+</td>
+<td style="text-align:right;">
+51539
+</td>
+<td style="text-align:left;">
+text/csv
+</td>
+<td style="text-align:left;">
+csv
+</td>
+<td style="text-align:left;">
+Comma-separated values
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
 <tr>
 <td style="text-align:right;">
 297528
@@ -2093,41 +2130,6 @@ NA
 </tr>
 <tr>
 <td style="text-align:right;">
-297523
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-PLAY_all_basic_demog
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-4860
-</td>
-<td style="text-align:right;">
-51539
-</td>
-<td style="text-align:left;">
-text/csv
-</td>
-<td style="text-align:left;">
-csv
-</td>
-<td style="text-align:left;">
-Comma-separated values
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
 297522
 </td>
 <td style="text-align:right;">
@@ -2163,6 +2165,7 @@ NA
 </tr>
 </tbody>
 </table>
+</div>
 <p>Note that each file has an <code>asset_id</code>. We’ll use this to access the data file(s) we want.</p>
 </div>
 <div id="import-by-measure" class="section level1">
@@ -2180,35 +2183,37 @@ pets &lt;-
 # Print the pets data
 pets %&gt;%
   kableExtra::kbl(.) %&gt;%
-  kableExtra::kable_styling(., bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+  kableExtra::kable_styling(., bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) %&gt;%
+  kableExtra::scroll_box(width = &quot;800px&quot;, height = &quot;300px&quot;)</code></pre>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:800px; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 play_site_id
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 site_child_id
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 child_age_grp
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 child_sex
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 kobo_form
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 pets_at_home
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 type_number
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 where_live
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 pets_comments
 </th>
 </tr>
@@ -3086,6 +3091,7 @@ NA
 </tr>
 </tbody>
 </table>
+</div>
 <p>We can do a bit of clean-up here to see what families have pets and of what type.</p>
 <pre class="r"><code>pets_cleaned &lt;- pets %&gt;%
   dplyr::mutate(., pets_at_home = recode(pets_at_home, &#39;Sí&#39; = &#39;Yes&#39;),
@@ -3098,41 +3104,43 @@ NA
 <pre class="r"><code>pets_cleaned %&gt;%
   dplyr::filter(., has_dog == TRUE) %&gt;%
   kableExtra::kbl(.) %&gt;%
-  kableExtra::kable_styling(., bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+  kableExtra::kable_styling(., bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) %&gt;%
+  kableExtra::scroll_box(width = &quot;800px&quot;, height = &quot;300px&quot;)</code></pre>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:800px; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 play_site_id
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 site_child_id
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 child_age_grp
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 child_sex
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 kobo_form
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 pets_at_home
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 type_number
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 where_live
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 pets_comments
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 has_dog
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 has_cat
 </th>
 </tr>
@@ -3490,6 +3498,7 @@ FALSE
 </tr>
 </tbody>
 </table>
+</div>
 <p>It looks like there are more homes with dogs.</p>
 </div>
 <div id="homes-with-cats" class="section level3">
@@ -3497,41 +3506,43 @@ FALSE
 <pre class="r"><code>pets_cleaned %&gt;%
   dplyr::filter(., has_cat == TRUE) %&gt;%
   kableExtra::kbl(.) %&gt;%
-  kableExtra::kable_styling(., bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+  kableExtra::kable_styling(., bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) %&gt;%
+  kableExtra::scroll_box(width = &quot;800px&quot;, height = &quot;300px&quot;)</code></pre>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:800px; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 play_site_id
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 site_child_id
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 child_age_grp
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 child_sex
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 kobo_form
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 pets_at_home
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 type_number
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 where_live
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 pets_comments
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 has_dog
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 has_cat
 </th>
 </tr>
@@ -3679,6 +3690,7 @@ TRUE
 </tr>
 </tbody>
 </table>
+</div>
 <p>Most cats and dogs live indoors. This must be in NYC!</p>
 <p>Also, there seem to be dog families and cat families, but not both.</p>
 </div>
@@ -3698,47 +3710,49 @@ typical_day_data &lt;-
 typical_day_data %&gt;%
   kableExtra::kbl(.) %&gt;%
   kableExtra::kable_styling(.,
-                            bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+                            bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) %&gt;%
+  kableExtra::scroll_box(width = &quot;800px&quot;, height = &quot;300px&quot;)</code></pre>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:800px; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 play_site_id
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 site_child_id
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 child_age_grp
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 child_sex
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 kobo_form
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 typical_day
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 day_how_different
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 activities_similar
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 activities_different
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 typical_night_morning
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 night_morning_how_different
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 unusual_feelings
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 feelings_how_different
 </th>
 </tr>
@@ -4976,6 +4990,7 @@ NA
 </tr>
 </tbody>
 </table>
+</div>
 <p>We’ll do a little clean-up and select a smaller number of columns.</p>
 <pre class="r"><code>typical_cleaned &lt;- typical_day_data %&gt;%
   dplyr::mutate(
@@ -5000,26 +5015,28 @@ NA
 typical_cleaned %&gt;%
   kableExtra::kbl(.) %&gt;%
   kableExtra::kable_styling(.,
-                            bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) </code></pre>
+                            bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) %&gt;%
+  kableExtra::scroll_box(width = &quot;800px&quot;, height = &quot;300px&quot;)</code></pre>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:800px; ">
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 play_site_id
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 child_age_grp
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 typical_day
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 activities_similar
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 typical_night_morning
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 unusual_feelings
 </th>
 </tr>
@@ -5627,7 +5644,9949 @@ Yes
 </tr>
 </tbody>
 </table>
-<p>Note that the <code>unusual_feelings</code> variable might need to be examined more closely.</p>
+</div>
+<p>Note that the <code>unusual_feelings</code> variable might need to be examined more closely. This short name might not reflect the actual question properly.</p>
+</div>
+<div id="household-labor" class="section level2">
+<h2>Household labor</h2>
+<pre class="r"><code># Grab the asset_id for the data based on the name
+labor_in_name &lt;-
+  stringr::str_detect(play_survey_files$name, &#39;labor&#39;)
+household_labor_asset_id &lt;- play_survey_files$asset_id[labor_in_name]
+
+# Select and download the data
+household_labor &lt;-
+  databraryapi::read_csv_data_as_df(params$play_survey_session_id, as.numeric(household_labor_asset_id))
+
+# Print the data
+household_labor %&gt;%
+  kableExtra::kbl(.) %&gt;%
+  kableExtra::kable_styling(.,
+                            bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) %&gt;%
+  kableExtra::scroll_box(width = &quot;800px&quot;, height = &quot;300px&quot;)</code></pre>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:800px; ">
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+play_site_id
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+site_child_id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+child_age_grp
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+child_sex
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+kobo_form
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+laundry_caregiver
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+laundry_partner
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+laundry_other
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+laundry_who_else
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+cleaning_caregiver
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+cleaning_partner
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+cleaning_other
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+cleaning_who_else
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+dishes_caregiver
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+dishes_partner
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+dishes_other
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+dishes_who_else
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+cooking_caregiver
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+cooking_partner
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+cooking_other
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+cooking_who_else
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+feed_child_caregiver
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+feed_child_partner
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+feed_child_other
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+feed_child_who_else
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+dropoff_child_caregiver
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+dropoff_child_partner
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+dropoff_child_other
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+dropoff_child_who_else
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+to_bed_child_caregiver
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+to_bed_child_partner
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+to_bed_child_other
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+to_bed_child_who_else
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+discipline_child_caregiver
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+discipline_child_partner
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+discipline_child_other
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+discipline_child_who_else
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+household_labor_comments
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+PLAY_89941455
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_Bilingual_English
+</td>
+<td style="text-align:left;">
+4 - All of it
+</td>
+<td style="text-align:left;">
+0 - None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3 - Most of it
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3 - Most of it
+</td>
+<td style="text-align:left;">
+0 - None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3 - Most of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3 - Most of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941534
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_Bilingual_Spanish
+</td>
+<td style="text-align:left;">
+2 - Alrededor de la mitad
+</td>
+<td style="text-align:left;">
+2 - Alrededor de la mitad
+</td>
+<td style="text-align:left;">
+1 - Algo
+</td>
+<td style="text-align:left;">
+Helo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - Alrededor de la mitad
+</td>
+<td style="text-align:left;">
+2 - Alrededor de la mitad
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Algo
+</td>
+<td style="text-align:left;">
+3 - La mayoría
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Algunas veces
+</td>
+<td style="text-align:left;">
+3 - La mayoría de las veces
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Algunas veces
+</td>
+<td style="text-align:left;">
+4 - Todas las veces
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3 - La mayoría de las veces
+</td>
+<td style="text-align:left;">
+1 - Algunas veces
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - Alrededor de la mitad de las veces
+</td>
+<td style="text-align:left;">
+2 - Alrededor de la mitad de las veces
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_899_232_NODB
+</td>
+<td style="text-align:right;">
+232
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+3 - Most of it
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+Nanny does bab’sy laundry
+</td>
+<td style="text-align:left;">
+3 - Most of it
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+Cleaning lady, and nanny
+</td>
+<td style="text-align:left;">
+3 - Most of it
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+Cleaning lady and nanny
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+4 - All the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941894
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3 - Most of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+babysitter
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+babysitter
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+babysitter
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442353
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Daycare and grandparents
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Grandparents or babysitter
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Daycare
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441417
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+Housekeeper, no relation to Zora
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89943207
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+3 - Most of it
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+3 - Most of it
+</td>
+<td style="text-align:left;">
+Housecleaner
+</td>
+<td style="text-align:left;">
+3 - Most of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+3 - Most of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3 - Most of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+3 - Most of the time
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+4 - All the time
+</td>
+<td style="text-align:left;">
+4 - All the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_899_226_NODB
+</td>
+<td style="text-align:right;">
+226
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+Sends it out and has weekly housekeeper do it.
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+Housekeeper
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Grandmother or cousin
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Whoever is with him (grandmother, cousin, etc.)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938197
+</td>
+<td style="text-align:right;">
+228
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938485
+</td>
+<td style="text-align:right;">
+231
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Nanny or babysitter. Really once a month.
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441428
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+All the time
+</td>
+<td style="text-align:left;">
+All the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941608
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All of the time
+</td>
+<td style="text-align:left;">
+All of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442694
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+Cleaning lady
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Grandmother
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442127
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Grandmother
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_98242940
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+0 - None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+0 - None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+0 - None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3 - Most of it
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+0 - None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+Day care or grandparent for lunch
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+0 - Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+0 - Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+Grandparents and day care
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938196
+</td>
+<td style="text-align:right;">
+227
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Housecleaner who comes every other week
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95440510
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_899_232_NODB
+</td>
+<td style="text-align:right;">
+232
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941535
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Cleaning lady
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+Does not apply
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Nanny
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_96643624
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+0 - None
+</td>
+<td style="text-align:left;">
+4 - All of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+3 - Most of it
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+Cleaning person comes once a month.
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+3 - Most of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+3 - Most of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+At daycare or grandparents
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+3 - Most of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3 - Most of the time
+</td>
+<td style="text-align:left;">
+3 - Most of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+Grandparents occasionally or at the daycare, some caretakersat daycare.
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_110344638
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+3 - Most of it
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+Cleaner for the bathrooms (hired - no relationship to Aliana)
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+4 - All the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+Babysitter (friend) feeds her snacks (goes to babysitter 2.5 hours twice a week)
+</td>
+<td style="text-align:left;">
+4 - All the time
+</td>
+<td style="text-align:left;">
+0 - Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+0 - Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+Babysitter (friend) - 2.5 hours twice a week
+</td>
+<td style="text-align:left;">
+Mom puts Aliana down for nap, husband puts her down at night
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938215
+</td>
+<td style="text-align:right;">
+229
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+24_Bilingual_Spanish
+</td>
+<td style="text-align:left;">
+Alrededor de la mitad
+</td>
+<td style="text-align:left;">
+Alrededor de la mitad
+</td>
+<td style="text-align:left;">
+Nada
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Alrededor de la mitad
+</td>
+<td style="text-align:left;">
+Alrededor de la mitad
+</td>
+<td style="text-align:left;">
+Algo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+La mayoría
+</td>
+<td style="text-align:left;">
+Algo
+</td>
+<td style="text-align:left;">
+Nada
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Alrededor de la mitad
+</td>
+<td style="text-align:left;">
+Algo
+</td>
+<td style="text-align:left;">
+Nada
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Todas las veces
+</td>
+<td style="text-align:left;">
+Algunas veces
+</td>
+<td style="text-align:left;">
+Nunca
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Todas las veces
+</td>
+<td style="text-align:left;">
+Nunca
+</td>
+<td style="text-align:left;">
+Nunca
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Todas las veces
+</td>
+<td style="text-align:left;">
+Nunca
+</td>
+<td style="text-align:left;">
+Nunca
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+La mayoría de las veces
+</td>
+<td style="text-align:left;">
+Algunas veces
+</td>
+<td style="text-align:left;">
+Nunca
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_98242292
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442353
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+All the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441873
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938236
+</td>
+<td style="text-align:right;">
+230
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+Custodian comes in every other month to do overall cleaning
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Day care
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Day care
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941800
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Laundromat
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+Cleaning person
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+Daycare staff
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941808
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+House cleaner
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+At school, mom’s sister
+</td>
+<td style="text-align:left;">
+All the time
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Mom’s sister
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441873
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Most of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All of it
+</td>
+<td style="text-align:left;">
+Some of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+All the time
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+About half of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Some of the time
+</td>
+<td style="text-align:left;">
+Most of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89943530
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+2 - About half of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Some of it
+</td>
+<td style="text-align:left;">
+3 - Most of it
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+Gets fed lunch at daycare.
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+4 - All the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+2 - About half of the time
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+1 - Some of the time
+</td>
+<td style="text-align:left;">
+Daycare.
+</td>
+<td style="text-align:left;">
+Past week daycare applies but usually mom does it most of the time.
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="health" class="section level2">
+<h2>Health</h2>
+<pre class="r"><code># Grab the asset_id for the data based on the name
+health_in_name &lt;-
+  stringr::str_detect(play_survey_files$name, &#39;health&#39;)
+health_asset_id &lt;- play_survey_files$asset_id[health_in_name]
+
+# Select and download the data
+health &lt;-
+  databraryapi::read_csv_data_as_df(params$play_survey_session_id, as.numeric(health_asset_id))
+
+# Print the data
+health %&gt;%
+  kableExtra::kbl(.) %&gt;%
+  kableExtra::kable_styling(.,
+                            bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)) %&gt;%
+  kableExtra::scroll_box(width = &quot;800px&quot;, height = &quot;300px&quot;)</code></pre>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:800px; ">
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+play_site_id
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+site_child_id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+child_age_grp
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+child_sex
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+kobo_form
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+breastfeed_ever
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+breastfeed_mos
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+how_fed_last_7d
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+how_fed_last_7d_breastfed
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+how_fed_last_7d_formula
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+how_fed_last_7d_cows_milk
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+how_fed_last_7d_refused
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+how_fed_last_7d_dont_know
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+how_fed_last_7d_nondairy
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+how_fed_last_7d_none_above
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+age_mos_1st_solid_food
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+ecls_b_a_nutrition_comments
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+sleep_position
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+health_rating
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+age_mos_last_wellbaby
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+vaccinated_last_4w
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+specialist_care
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+specialist_care_specify
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+hearing_tested
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+hearing_tested_birth_hosp
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+hearing_tested_after_home
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+hearing_tested_no
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+hearing_tested_refused
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+hearing_tested_dont_know
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+vision_tested
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+vision_tested_birth_hosp
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+vision_tested_after_home
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+vision_tested_no
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+vision_tested_refused
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+vision_tested_dont_know
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+food_med_allergies
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+ear_infection
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+asthma
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+respiratory_illness
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+gi_illness
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+eclsb_a_genl_health_injury_comments
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+injury_n_times
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+injury_describe
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+eclsb_a_genl_health_comments
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+prenatal_care
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+prenatal_care_comments
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+smoke_while_pregnant
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+smoke_packs_daily_1st_tri
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+smoke_packs_daily_2nd_tri
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+smoke_packs_daily_3rd_tri
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+smoke_now
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+smoke_packs_daily_now
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+smoking_in_house
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+smoking_in_car
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+ecls_b_a_smoking_comments
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+drink_while_pregnant
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+drinks_weekly_1st_tri
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+drinks_weekly_2nd_tri
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+drinks_weekly_3rd_tri
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+eclsb_a_drinking_comments
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+feel_anxious
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+cant_stop_worrying
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+little_interest_pleasure
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+feel_depressed
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+ecls_b_f_phq_comments
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Combined.Questionnaires..PLAY..Home.Visit.Questionnaires.Health.Related.Questions..ECLS.B..F..Patient.Health.Questionnaire..PHQ.4..F4…Feeling.down..depressed..or.hopeless.
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Combined.Questionnaires..PLAY..Home.Visit.Questionnaires.Health.Related.Questions..ECLS.B..F..Patient.Health.Questionnaire..PHQ.4..Patient.Health.Questionnaire.Comments
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+PLAY_89941455
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_Bilingual_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Formula-fed
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - More than half the days
+</td>
+<td style="text-align:left;">
+2 - More than half the days
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941534
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_Bilingual_Spanish
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Alimentado con formula
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Acostado de espaldas
+</td>
+<td style="text-align:left;">
+Excelente
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Si, al nacer
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Si, cuando ya estaba en casa
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Dos veces
+</td>
+<td style="text-align:left;">
+Brachial plexus injury at birth. Also, baby fell from the bed went to Dr but no injury.
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+No bebía en ese momento
+</td>
+<td style="text-align:left;">
+No bebía en ese momento
+</td>
+<td style="text-align:left;">
+Menos de una bebida
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - Más de la mitad de los días
+</td>
+<td style="text-align:left;">
+1 - Varios días
+</td>
+<td style="text-align:left;">
+0 - No del todo
+</td>
+<td style="text-align:left;">
+0 - No del todo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_899_232_NODB
+</td>
+<td style="text-align:right;">
+232
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Breast-fed Cow’s milk
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Dermatologist for cut
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Don’t know
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Once
+</td>
+<td style="text-align:left;">
+Pulled something and hit her head. 10mo.
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Refused
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Didn’t drink then
+</td>
+<td style="text-align:left;">
+1 to 3 drinks
+</td>
+<td style="text-align:left;">
+Less than 1 drink
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941894
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Breast-fed Formula-fed
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Still currently breastfeeding
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+1 to 3 drinks
+</td>
+<td style="text-align:left;">
+4 to 6 drinks
+</td>
+<td style="text-align:left;">
+1 to 3 drinks
+</td>
+<td style="text-align:left;">
+Mom said she stopped drinking when she realized she was pregnant.
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442353
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Breast-fed Formula-fed
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Very good
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Allergist
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Three or more
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441417
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Breast-fed
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Precautionary ultrasounds because baby was breached
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Once
+</td>
+<td style="text-align:left;">
+Emergency room because baby fell, had a bruise on cheek and baby had runny nose and nurse wanted to make sure it wasn’t spinal fluid
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Didn’t drink then
+</td>
+<td style="text-align:left;">
+Didn’t drink then
+</td>
+<td style="text-align:left;">
+1 to 3 drinks
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89943207
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Breast-fed Formula-fed
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+She had a little bit of solid food between 4-5 months
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_899_226_NODB
+</td>
+<td style="text-align:right;">
+226
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Formula-fed
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Refused
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Once
+</td>
+<td style="text-align:left;">
+4-5 months old, rolled off bed, hands hit floor but head didn’t. Called 911 but doctor said it was fine.
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+3 - Nearly every day
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938197
+</td>
+<td style="text-align:right;">
+228
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Very good
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Saw an allergist, also saw a doctor to get under his tongue clipped and his gum line clipped
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Suspected peanut allergy
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2 - More than half the days
+</td>
+<td style="text-align:left;">
+2 - More than half the days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938485
+</td>
+<td style="text-align:right;">
+231
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Formula-fed Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Family doesn’t have a car
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Didn’t drink then
+</td>
+<td style="text-align:left;">
+Less than 1 drink
+</td>
+<td style="text-align:left;">
+1 to 3 drinks
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441428
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Breast-fed
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Admitted to hospital because she got virus, vomited, stayed because she was so young
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Didn’t drink then
+</td>
+<td style="text-align:left;">
+1 to 3 drinks
+</td>
+<td style="text-align:left;">
+1 to 3 drinks
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941608
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+12 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+12_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Breast-fed
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Tongue tie was corrected. Saw PT for Torricelli. Neuro for head flatting but no treatment (no helmet)
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Don’t know
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Once
+</td>
+<td style="text-align:left;">
+Fell out of high chair 3 ft high at 8 months. Bloody nose. Went to ER but she was fine.
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Don’t know
+</td>
+<td style="text-align:left;">
+Didn’t drink then
+</td>
+<td style="text-align:left;">
+Less than 1 drink
+</td>
+<td style="text-align:left;">
+8 months drank 1 glass of wine
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442694
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes, after going home
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Flu
+</td>
+<td style="text-align:left;">
+Once
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442127
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+Breast-fed Cow’s milk
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Lactation specialist, at 6 months baby wasn’t gaining weight
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes, after going home
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_98242940
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+QA added comment: Child started breast-feeding at 3mo and stoped at 10-mo.
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Very good
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+ENT for chronic ear infections
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes, after going home
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+May need ear tubes put in
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Less than 1 drink
+</td>
+<td style="text-align:left;">
+Didn’t drink then
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938196
+</td>
+<td style="text-align:right;">
+227
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95440510
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes, after going home
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Once
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Didn’t drink then
+</td>
+<td style="text-align:left;">
+Didn’t drink then
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_899_232_NODB
+</td>
+<td style="text-align:right;">
+232
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941535
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Pediatric cardiologist, benign heart murmur, seems fine, checking back when 3 years old
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital Yes, after going home
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Don’t know
+</td>
+<td style="text-align:left;">
+Less than 1 drink
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3 - Nearly every day
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_96643624
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Very good
+</td>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Fluid travelling from back to front of his neck to his skull. Doctor’s did not know what it was. Due to vacuum birth possibly. Lip tie and went to ear nose and throat doctor.
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital Yes, after going home
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Twice
+</td>
+<td style="text-align:left;">
+Possible peanut allergy and possible asthma. Not confirmed by professional.
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Less than 1 drink
+</td>
+<td style="text-align:left;">
+Didn’t drink then
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+3 - Nearly every day
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_110344638
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+18 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+18_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Non-dairy milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Tongue tie and lip tie (clipped) when she was a few weeks old
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+When child was a newborn, she would sleep on her back and on her side.
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938215
+</td>
+<td style="text-align:right;">
+229
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+24_Bilingual_Spanish
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+Alimentado con leche materna
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Acostado de espaldas
+</td>
+<td style="text-align:left;">
+Excelente
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+Metabolic clinic
+</td>
+<td style="text-align:left;">
+Si, al nacer
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Si, al nacer
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Nunca
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Varios días
+</td>
+<td style="text-align:left;">
+0 - No del todo
+</td>
+<td style="text-align:left;">
+0 - No del todo
+</td>
+<td style="text-align:left;">
+0 - No del todo
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_98242292
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes, after going home
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Once
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95442353
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+For A4, Mom indicated 4-5 months of age.
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Don’t know
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Don’t know
+</td>
+<td style="text-align:left;">
+D8 not asked/ answered, as questionnaire did not have this question included.
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+1 to 3 drinks
+</td>
+<td style="text-align:left;">
+Didn’t drink then
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441873
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+Mom indicated that she did not breast feed, but she pumped for 12 months.
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Very good
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Allergist; child has a peanut allergy.
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes, after going home
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89938236
+</td>
+<td style="text-align:right;">
+230
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Ears Nose Throat doctor
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital Yes, after going home
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Don’t know
+</td>
+<td style="text-align:left;">
+Was not in the paper questionnaire
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941800
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Ear infection close to 10-12 months, again at 15-18 months.
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Family does not have a car.
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Didn’t drink then
+</td>
+<td style="text-align:left;">
+Didn’t drink then
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89941808
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1 - Several days
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_95441873
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Very good
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Allergist
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Allergic to peanuts
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLAY_89943530
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+24 month
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+24_English
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Cow’s milk
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Lying on back
+</td>
+<td style="text-align:left;">
+Excellent
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Ultra sound of spine for sacral dimple when 6 weeks old, evaluation for tongue tied for specialist at around same time
+</td>
+<td style="text-align:left;">
+Yes, in the birth hospital Yes, after going home
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+24 hour bug when he was 9 months, ear infection several (4-5 times every three/five months since 9 months)
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+0 - Not at all
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div id="clean-up" class="section level1">

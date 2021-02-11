@@ -75,7 +75,6 @@ The PLAY data release volume has an id of `r params$play_volume_id`.
 The survey data session has a session id of `r params$play_survey_session_id`.
 
 So, to go to the PLAY volume in your browser, you can visit <https://nyu.databrary.org/volume/1280>.
-And to visit the session data in your browser, you can visit <https://nyu.databrary.org/volume/1280/session/51539>.
 
 The following code, however, does all of this within an R session.
 
@@ -86,7 +85,8 @@ play_survey_files <-
 # Print the files data in a 'pretty' way
 play_survey_files %>%
   kableExtra::kbl(.) %>%
-  kableExtra::kable_styling(., bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
+  kableExtra::kable_styling(., bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  kableExtra::scroll_box(width = "800px", height = "300px")
 ```
 
 Note that each file has an `asset_id`.
@@ -108,7 +108,8 @@ pets <-
 # Print the pets data
 pets %>%
   kableExtra::kbl(.) %>%
-  kableExtra::kable_styling(., bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
+  kableExtra::kable_styling(., bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  kableExtra::scroll_box(width = "800px", height = "300px")
 ```
 
 We can do a bit of clean-up here to see what families have pets and of what type.
@@ -128,7 +129,8 @@ pets_cleaned <- pets %>%
 pets_cleaned %>%
   dplyr::filter(., has_dog == TRUE) %>%
   kableExtra::kbl(.) %>%
-  kableExtra::kable_styling(., bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
+  kableExtra::kable_styling(., bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  kableExtra::scroll_box(width = "800px", height = "300px")
 ```
 
 It looks like there are more homes with dogs.
@@ -139,7 +141,8 @@ It looks like there are more homes with dogs.
 pets_cleaned %>%
   dplyr::filter(., has_cat == TRUE) %>%
   kableExtra::kbl(.) %>%
-  kableExtra::kable_styling(., bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
+  kableExtra::kable_styling(., bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  kableExtra::scroll_box(width = "800px", height = "300px")
 ```
 
 Most cats and dogs live indoors.
@@ -163,7 +166,8 @@ typical_day_data <-
 typical_day_data %>%
   kableExtra::kbl(.) %>%
   kableExtra::kable_styling(.,
-                            bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
+                            bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  kableExtra::scroll_box(width = "800px", height = "300px")
 ```
 
 We'll do a little clean-up and select a smaller number of columns.
@@ -192,10 +196,52 @@ typical_cleaned <- typical_day_data %>%
 typical_cleaned %>%
   kableExtra::kbl(.) %>%
   kableExtra::kable_styling(.,
-                            bootstrap_options = c("striped", "hover", "condensed", "responsive")) 
+                            bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  kableExtra::scroll_box(width = "800px", height = "300px")
 ```
 
 Note that the `unusual_feelings` variable might need to be examined more closely.
+This short name might not reflect the actual question properly.
+
+## Household labor
+
+```{r household-labor}
+# Grab the asset_id for the data based on the name
+labor_in_name <-
+  stringr::str_detect(play_survey_files$name, 'labor')
+household_labor_asset_id <- play_survey_files$asset_id[labor_in_name]
+
+# Select and download the data
+household_labor <-
+  databraryapi::read_csv_data_as_df(params$play_survey_session_id, as.numeric(household_labor_asset_id))
+
+# Print the data
+household_labor %>%
+  kableExtra::kbl(.) %>%
+  kableExtra::kable_styling(.,
+                            bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  kableExtra::scroll_box(width = "800px", height = "300px")
+```
+
+## Health
+
+```{r health}
+# Grab the asset_id for the data based on the name
+health_in_name <-
+  stringr::str_detect(play_survey_files$name, 'health')
+health_asset_id <- play_survey_files$asset_id[health_in_name]
+
+# Select and download the data
+health <-
+  databraryapi::read_csv_data_as_df(params$play_survey_session_id, as.numeric(health_asset_id))
+
+# Print the data
+health %>%
+  kableExtra::kbl(.) %>%
+  kableExtra::kable_styling(.,
+                            bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  kableExtra::scroll_box(width = "800px", height = "300px")
+```
 
 # Clean-up
 
