@@ -1790,7 +1790,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">PLAY Survey Data</h1>
 <h4 class="author">Rick Gilmore</h4>
-<h4 class="date">2021-02-11 10:14:11</h4>
+<h4 class="date">2021-02-11 10:22:44</h4>
 
 </div>
 
@@ -1804,6 +1804,7 @@ div.tocify {
 <p>To render the document, issue this command from the R console</p>
 <p><code>rmarkdown::render(&#39;survey-data.Rmd&#39;, params = list(db_login=&#39;&lt;YOUR_DATABRARY_LOGIN&gt;&#39;))</code></p>
 <p>substituting your actual Databrary login (email account) for <code>&lt;YOUR_DATABRARY_LOGIN&gt;</code>.</p>
+<p>If you try to ‘knit’ the document another way, it won’t work.</p>
 </div>
 <div id="setup" class="section level1">
 <h1>Setup</h1>
@@ -1834,7 +1835,8 @@ library(tidyverse) # for pipe `%&gt;%` operator</code></pre>
 <p>The PLAY data release volume has an id of 1280. The survey data session has a session id of 51539.</p>
 <p>So, to go to the PLAY volume in your browser, you can visit <a href="https://nyu.databrary.org/volume/1280" class="uri">https://nyu.databrary.org/volume/1280</a>. And to visit the session data in your browser, you can visit <a href="https://nyu.databrary.org/volume/1280/session/51539" class="uri">https://nyu.databrary.org/volume/1280/session/51539</a>.</p>
 <p>The following code, however, does all of this within an R session.</p>
-<pre class="r"><code>play_survey_files &lt;- databraryapi::list_assets_in_session(session_id = params$play_survey_session_id)
+<pre class="r"><code>play_survey_files &lt;-
+  databraryapi::list_assets_in_session(session_id = params$play_survey_session_id)
 
 # Print the files data in a &#39;pretty&#39; way
 play_survey_files %&gt;%
@@ -2172,7 +2174,8 @@ pets_in_name &lt;- stringr::str_detect(play_survey_files$name, &#39;pets&#39;)
 pets_asset_id &lt;- play_survey_files$asset_id[pets_in_name]
 
 # Select and download the pets data
-pets &lt;- databraryapi::read_csv_data_as_df(params$play_survey_session_id, as.numeric(pets_asset_id))
+pets &lt;-
+  databraryapi::read_csv_data_as_df(params$play_survey_session_id, as.numeric(pets_asset_id))
 
 # Print the pets data
 pets %&gt;%
@@ -3677,6 +3680,7 @@ TRUE
 </tbody>
 </table>
 <p>Most cats and dogs live indoors. This must be in NYC!</p>
+<p>Also, there seem to be dog families and cat families, but not both.</p>
 </div>
 </div>
 </div>

@@ -28,6 +28,8 @@ To render the document, issue this command from the R console
 
 substituting your actual Databrary login (email account) for `<YOUR_DATABRARY_LOGIN>`.
 
+If you try to 'knit' the document another way, it won't work.
+
 # Setup
 
 There are several R packages we need to run this code.
@@ -78,7 +80,8 @@ And to visit the session data in your browser, you can visit <https://nyu.databr
 The following code, however, does all of this within an R session.
 
 ```{r load-play-survey-files}
-play_survey_files <- databraryapi::list_assets_in_session(session_id = params$play_survey_session_id)
+play_survey_files <-
+  databraryapi::list_assets_in_session(session_id = params$play_survey_session_id)
 
 # Print the files data in a 'pretty' way
 play_survey_files %>%
@@ -99,7 +102,8 @@ pets_in_name <- stringr::str_detect(play_survey_files$name, 'pets')
 pets_asset_id <- play_survey_files$asset_id[pets_in_name]
 
 # Select and download the pets data
-pets <- databraryapi::read_csv_data_as_df(params$play_survey_session_id, as.numeric(pets_asset_id))
+pets <-
+  databraryapi::read_csv_data_as_df(params$play_survey_session_id, as.numeric(pets_asset_id))
 
 # Print the pets data
 pets %>%
@@ -140,6 +144,8 @@ pets_cleaned %>%
 
 Most cats and dogs live indoors.
 This must be in NYC!
+
+Also, there seem to be dog families and cat families, but not both.
 
 # Clean-up
 
