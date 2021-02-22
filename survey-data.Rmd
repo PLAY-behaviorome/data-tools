@@ -223,6 +223,52 @@ household_labor %>%
   kableExtra::scroll_box(width = "800px", height = "300px")
 ```
 
+## Locomotor milestones
+
+```{r loco-milestones}
+# Grab the asset_id for the data based on the name
+loco_in_name <-
+  stringr::str_detect(play_survey_files$name, 'loco')
+loco_milestones_asset_id <- play_survey_files$asset_id[loco_in_name]
+
+# Select and download the data
+loco_milestones <-
+  databraryapi::read_csv_data_as_df(params$play_survey_session_id, as.numeric(loco_milestones_asset_id))
+
+# Print the data
+loco_milestones %>%
+  # Drop comments here for privacy...
+  dplyr::select(., -c('WHO_walk_comments', 'walk_onset_comments', 'crawl_onset_comments')) %>%
+  kableExtra::kbl(.) %>%
+  kableExtra::kable_styling(.,
+                            bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  kableExtra::scroll_box(width = "800px", height = "300px")
+```
+
+Clean-up to focus on milestone ages.
+
+```{r}
+loco_cleaned <- loco_milestones %>%
+  dplyr::select(.,
+                child_age_grp,
+                child_sex,
+                WHO_walk_month,
+                walk_onset_month,
+                crawl_onset_month) %>%
+  tidyr::pivot_longer(
+    .,
+    cols = c('WHO_walk_month', 'walk_onset_month', 'crawl_onset_month'),
+    names_to = "milestone",
+    values_to = "age_mos"
+  )
+
+loco_cleaned %>%
+  ggplot(.) +
+  aes(x = age_mos, fill = child_sex) +
+  geom_histogram() +
+  facet_grid(milestone ~ .)
+```
+
 ## Health
 
 ```{r health}
@@ -242,6 +288,9 @@ household_labor %>%
 #                             bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
 #   kableExtra::scroll_box(width = "800px", height = "300px")
 ```
+
+
+
 
 # Clean-up
 
