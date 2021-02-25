@@ -203,6 +203,20 @@ typical_cleaned %>%
 Note that the `unusual_feelings` variable might need to be examined more closely.
 This short name might not reflect the actual question properly.
 
+```{r}
+typical_day %>%
+  dplyr::select(., child_age_grp, typical_day) %>%
+  dplyr::filter(., !is.na(typical_day)) %>%
+  dplyr::mutate(., typical_day = recode(typical_day, 'Sí' = 'Yes')) %>%
+  dplyr::group_by(child_age_grp) %>%
+  dplyr::summarise(n_families = n(),
+                   n_rating_typical = sum(typical_day == 'Yes')) %>%
+  kableExtra::kbl(.) %>%
+  kableExtra::kable_styling(.,
+                            bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  kableExtra::scroll_box(width = "800px", height = "250px")
+```
+
 ## Household labor
 
 ```{r household-labor}
@@ -287,6 +301,44 @@ loco_cleaned %>%
 #   kableExtra::kable_styling(.,
 #                             bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
 #   kableExtra::scroll_box(width = "800px", height = "300px")
+```
+
+
+## Media
+
+```{r media}
+# Grab the asset_id for the data based on the name
+media_in_name <-
+  stringr::str_detect(play_survey_files$name, 'media')
+media_asset_id <- play_survey_files$asset_id[media_in_name]
+
+# Select and download the data
+media <-
+  databraryapi::read_csv_data_as_df(params$play_survey_session_id, as.numeric(media_asset_id))
+
+# Print the data
+media %>%
+  kableExtra::kbl(.) %>%
+  kableExtra::kable_styling(.,
+                            bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  kableExtra::scroll_box(width = "800px", height = "300px")
+```
+
+Do some clean-up to summarize some of the findings.
+
+```{r media-summarize}
+media %>%
+  dplyr::select(., child_age_grp, have_tv, child_used_tv) %>%
+  dplyr::filter(., !is.na(child_used_tv)) %>%
+  dplyr::mutate(., child_used_tv = recode(child_used_tv, 'Sí' = 'Yes')) %>%
+  dplyr::group_by(child_age_grp) %>%
+  dplyr::summarise(homes_w_tv = sum(have_tv),
+                   children_use_tv = sum(child_used_tv == "Yes")) %>%
+  kableExtra::kbl(.) %>%
+  kableExtra::kable_styling(.,
+                            bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  kableExtra::scroll_box(width = "800px", height = "250px")
+
 ```
 
 
